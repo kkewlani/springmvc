@@ -7,9 +7,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Customer {
+public class Customer implements DomainObject{
 
-    private Integer customerId;
+    private Integer id;
 
     private String firstName;
 

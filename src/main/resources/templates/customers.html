@@ -28,7 +28,7 @@
                 <th>Delete customer</th>
             </tr>
             <tr th:each="customer: ${customers}">
-                <td th:text="${customer.customerId}"></td>
+                <td th:text="${customer.id}"></td>
                 <td th:text="${customer.firstName}+' '+${customer.lastName}"></td>
                 <td>
                     <span th:text="${customer.address.addressLine1}"></span>
@@ -37,9 +37,9 @@
                     <span th:text="${customer.address.state}"></span>
                     <span th:text="${customer.address.zipcode}"></span>
                 </td>
-                <td><a th:href="${'/customer/'+ customer.customerId}">View</a></td>
-                <td><a th:href="${'/customer/edit/'+ customer.customerId}">Edit</a></td>
-                <td><a th:href="${'/customer/delete/'+ customer.customerId}">Delete</a></td>
+                <td><a th:href="${'/customer/'+ customer.id}">View</a></td>
+                <td><a th:href="${'/customer/edit/'+ customer.id}">Edit</a></td>
+                <td><a th:href="${'/customer/delete/'+ customer.id}">Delete</a></td>
             </tr>
         </table>
     </div>

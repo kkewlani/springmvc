@@ -9,9 +9,12 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Product {
+public class Product implements DomainObject {
     private Integer id;
+
     private String description;
+
     private BigDecimal price;
+
     private String imageUrl;
 }

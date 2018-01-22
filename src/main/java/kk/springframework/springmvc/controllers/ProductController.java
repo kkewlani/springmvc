@@ -11,6 +11,7 @@ import kk.springframework.springmvc.domain.Product;
 import kk.springframework.springmvc.services.ProductService;
 import lombok.RequiredArgsConstructor;
 
+@RequestMapping("/product")
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
@@ -18,40 +19,40 @@ public class ProductController {
     @Autowired
     private final ProductService productService;
 
-    @RequestMapping("/products")
+    @RequestMapping({"/list", "/"})
     public String listProducts(Model model) {
-        model.addAttribute("products", productService.listAllProducts());
+        model.addAttribute("products", productService.listAll());
 
         return "products";
     }
 
-    @RequestMapping("/product/{productId}")
+    @RequestMapping("/{productId}")
     public String getProduct(@PathVariable Integer productId, Model model) {
-        model.addAttribute("product", productService.getProductById(productId));
+        model.addAttribute("product", productService.getById(productId));
         return "product";
     }
 
-    @RequestMapping("/product/new")
+    @RequestMapping("/new")
     public String newProduct(Model model) {
         model.addAttribute("product", new Product());
         return "productform";
     }
 
-    @RequestMapping(value = "/product", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String createOrUpdateProduct(Product product) {
-        Product savedOrUpdateProduct = productService.createOrUpdateProduct(product);
+        Product savedOrUpdateProduct = productService.createOrUpdate(product);
         return "redirect:/product/" + savedOrUpdateProduct.getId();
     }
 
-    @RequestMapping("product/edit/{productId}")
+    @RequestMapping("/edit/{productId}")
     public String edit(@PathVariable Integer productId, Model model) {
-        model.addAttribute("product", productService.getProductById(productId));
+        model.addAttribute("product", productService.getById(productId));
         return "productform";
     }
 
-    @RequestMapping("product/delete/{productId}")
+    @RequestMapping("/delete/{productId}")
     public String delete(@PathVariable Integer productId) {
-        productService.deleteProduct(productId);
+        productService.delete(productId);
         return "redirect:/products";
     }
 }

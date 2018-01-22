@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kk.springframework.springmvc.domain.Customer;
 import kk.springframework.springmvc.services.CustomerService;
-import lombok.extern.log4j.Log4j2;
 
+@RequestMapping("/customer")
 @Controller
 public class CustomerController {
 
@@ -23,26 +22,26 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping("/customers")
+    @RequestMapping({"/list", "/"})
     public String getCustomers(Model model) {
-        model.addAttribute("customers", customerService.listCustomers());
+        model.addAttribute("customers", customerService.listAll());
         return "customers";
     }
 
-    @RequestMapping("/customer/{customerId}")
+    @RequestMapping("/{customerId}")
     public String getCustomerById(@PathVariable Integer customerId, Model model) {
-        model.addAttribute("customer", customerService.getCustomerById(customerId));
+        model.addAttribute("customer", customerService.getById(customerId));
         return "customer";
     }
 
-    @RequestMapping("/customer/new")
+    @RequestMapping("/new")
     public String newCustomer(Model model) {
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
         return "customerform";
     }
 
-    @RequestMapping(value = "/customer", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String createOrUpdateCustomer(Customer customer, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             System.out.println(bindingResult);
@@ -52,16 +51,16 @@ public class CustomerController {
         log.info(" cust received" + customer);
         Customer savedOrUpdateCustomer = customerService.createOrUpdate(customer);
         System.out.println(savedOrUpdateCustomer);
-        return "redirect:/customer/" + savedOrUpdateCustomer.getCustomerId();
+        return "redirect:/customer/" + savedOrUpdateCustomer.getId();
     }
 
-    @RequestMapping("/customer/edit/{customerId}")
+    @RequestMapping("/edit/{customerId}")
     public String editCustomer(@PathVariable Integer customerId, Model model) {
-        model.addAttribute("customer", customerService.getCustomerById(customerId));
+        model.addAttribute("customer", customerService.getById(customerId));
         return "customerform";
     }
 
-    @RequestMapping("/customer/delete/{customerId}")
+    @RequestMapping("/delete/{customerId}")
     public String deleteCustomer(@PathVariable Integer customerId) {
         customerService.delete(customerId);
         return "redirect:/customers";
