@@ -21,3 +21,5 @@ otherwise it will create a new object every time an object is edited.
 1. Writing Spring MVC tests for all the features in this application.
 1. Converting Customer class, which includes Address inbuilt currently, to customer - Address relationship using JPA 
 relationship.
+1. Add Dao for Customer class too.
+1. Load data for customers to at startup.
