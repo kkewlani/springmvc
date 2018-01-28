@@ -26,6 +26,11 @@ public class Customer implements DomainObject{
 
     private String lastName;
 
+    /**
+     * TODO
+     * Removing address as a separate class and thus a separate table created by JPA
+     * Will add this back once learned about mapping relationship using JPA
+     */
     //private Address address;
 
     private String addressLine1;
