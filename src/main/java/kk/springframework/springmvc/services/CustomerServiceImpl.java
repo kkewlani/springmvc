@@ -37,19 +37,17 @@ public class CustomerServiceImpl extends AbstractDomainMapService implements Cus
     protected void loadDomainObjectsMap() {
         domainObjectsMap = new HashMap<>();
 
-        Customer customer =
-                new Customer(1, "John", "Grisham", new Address("123 cedar st NE", "apt 221", "Seattle", "WA", 98109));
+        Customer customer = new Customer("John", "Grisham", "123 cedar st NE", "apt 221", "Seattle", "WA", 98109);
         domainObjectsMap.put(customer.getId(), customer);
-        customer = new Customer(2, "George", "Campbell",
-                                new Address("123 cedar st NE", "apt 221", "Seattle", "WA", 98109));
+        customer = new Customer("George", "Campbell", "123 cedar st NE", "apt 221", "Seattle", "WA", 98109);
         domainObjectsMap.put(customer.getId(), customer);
-        customer = new Customer(3, "Bob", "Dylan", new Address("123 cedar st NE", "apt 221", "Seattle", "WA", 98109));
+        customer = new Customer("Bob", "Dylan", "123 cedar st NE", "apt 221", "Seattle", "WA", 98109);
         domainObjectsMap.put(customer.getId(), customer);
-        customer = new Customer(4, "Tom", "Tayloe", new Address("123 cedar st NE", "apt 221", "Seattle", "WA", 98109));
+        customer = new Customer("Tom", "Tayloe", "123 cedar st NE", "apt 221", "Seattle", "WA", 98109);
         domainObjectsMap.put(customer.getId(), customer);
-        customer = new Customer(5, "Mark", "W", new Address("123 cedar st NE", "apt 221", "Seattle", "WA", 98109));
+        customer = new Customer("Mark", "W", "123 cedar st NE", "apt 221", "Seattle", "WA", 98109);
         domainObjectsMap.put(customer.getId(), customer);
-        customer = new Customer(6, "Jim", "Beam", new Address("123 cedar st NE", "apt 221", "Seattle", "WA", 98109));
+        customer = new Customer("Jim", "Beam", "123 cedar st NE", "apt 221", "Seattle", "WA", 98109);
         domainObjectsMap.put(customer.getId(), customer);
     }
 }

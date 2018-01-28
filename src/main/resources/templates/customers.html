@@ -30,13 +30,11 @@
             <tr th:each="customer: ${customers}">
                 <td th:text="${customer.id}"></td>
                 <td th:text="${customer.firstName}+' '+${customer.lastName}"></td>
-                <td>
-                    <span th:text="${customer.address.addressLine1}"></span>
-                    <span th:text="${customer.address.addressLine2}"></span>
-                    <span th:text="${customer.address.city}"></span>
-                    <span th:text="${customer.address.state}"></span>
-                    <span th:text="${customer.address.zipcode}"></span>
-                </td>
+                <td th:text="${customer.addressLine1}"></td>
+                <td th:text="${customer.addressLine2}"></td>
+                <td th:text="${customer.city}"></td>
+                <td th:text="${customer.state}"></td>
+                <td th:text="${customer.zipcode}"></td>
                 <td><a th:href="${'/customer/'+ customer.id}">View</a></td>
                 <td><a th:href="${'/customer/edit/'+ customer.id}">Edit</a></td>
                 <td><a th:href="${'/customer/delete/'+ customer.id}">Delete</a></td>

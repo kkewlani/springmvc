@@ -1,26 +1,64 @@
 package kk.springframework.springmvc.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Version;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+@Entity
 @Data
-@AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Customer implements DomainObject{
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     private Integer id;
 
+    @Version
+    private Integer version;
     private String firstName;
 
     private String lastName;
 
-    private Address address;
+    //private Address address;
+
+    private String addressLine1;
+
+    private String addressLine2;
+
+    private String city;
+
+    private String state;
+
+    private Integer zipcode;
+
+    public Customer(
+            String firstName, String lastName, String addressLine1, String addressLine2, String city,
+            String state, Integer zipcode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+    }
 
     @Data
-    @RequiredArgsConstructor
-    @AllArgsConstructor
+    @NoArgsConstructor
+    @Entity
     public static class Address {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        private Integer id;
+
         private String addressLine1;
 
         private String addressLine2;
@@ -31,5 +69,12 @@ public class Customer implements DomainObject{
 
         private Integer zipcode;
 
+        public Address(String addressLine1, String addressLine2, String city, String state, Integer zipcode) {
+            this.addressLine1 = addressLine1;
+            this.addressLine2 = addressLine2;
+            this.city = city;
+            this.state = state;
+            this.zipcode = zipcode;
+        }
     }
 }

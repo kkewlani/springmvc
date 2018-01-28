@@ -36,17 +36,17 @@ public class ProductServiceImpl extends AbstractDomainMapService implements Prod
     @Override
     protected void loadDomainObjectsMap() {
         domainObjectsMap = new HashMap<>();
-        Product product1 = new Product(1, "Product1", new BigDecimal("12.99"), "http://example.com/product1");
+        Product product1 = new Product("Product1", new BigDecimal("12.99"), "http://example.com/product1");
         domainObjectsMap.put(1, product1);
-        Product product2 = new Product(2, "Product2", new BigDecimal("24.99"), "http://example.com/product2");
+        Product product2 = new Product("Product2", new BigDecimal("24.99"), "http://example.com/product2");
         domainObjectsMap.put(2, product2);
-        Product product3 = new Product(3, "Product3", new BigDecimal("76.99"), "http://example.com/product3");
+        Product product3 = new Product("Product3", new BigDecimal("76.99"), "http://example.com/product3");
         domainObjectsMap.put(3, product3);
-        Product product4 = new Product(4, "Product4", new BigDecimal("54.99"), "http://example.com/product4");
+        Product product4 = new Product("Product4", new BigDecimal("54.99"), "http://example.com/product4");
         domainObjectsMap.put(4, product4);
-        Product product5 = new Product(5, "Product5", new BigDecimal("43.99"), "http://example.com/product5");
+        Product product5 = new Product("Product5", new BigDecimal("43.99"), "http://example.com/product5");
         domainObjectsMap.put(5, product5);
-        Product product6 = new Product(6, "Product6", new BigDecimal("23.99"), "http://example.com/product6");
+        Product product6 = new Product("Product6", new BigDecimal("23.99"), "http://example.com/product6");
         domainObjectsMap.put(6, product6);
     }
 
