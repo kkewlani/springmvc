@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import kk.springframework.springmvc.domain.DomainObject;
@@ -11,6 +12,7 @@ import kk.springframework.springmvc.domain.Product;
 import lombok.NonNull;
 
 @Service
+@Profile("map")
 public class ProductServiceImpl extends AbstractDomainMapService implements ProductService {
 
     @Override
