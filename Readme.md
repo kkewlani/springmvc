@@ -16,3 +16,8 @@ default when console loads.
 1. While using JPA with `versioning` for optimistic locking (the default mechanism used by JPA), we'll have to specify 
 the version being passed in the html form while editing an object in order for JPw to understand that it is an edit, 
 otherwise it will create a new object every time an object is edited. 
+
+## Pending Tasks aka TODOs
+1. Writing Spring MVC tests for all the features in this application.
+1. Converting Customer class, which includes Address inbuilt currently, to customer - Address relationship using JPA 
+relationship.
